@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 // Fetch projects from MongoDB
 app.get("/projects", async (req, res) => {
   try {
-    const projects = await Project.find();
+    const projects = await Project.findOne();
     res.json({
       status: "success",
       total: projects.length,
