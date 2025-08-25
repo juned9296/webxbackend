@@ -48,16 +48,18 @@ app.get("/", (req, res) => {
 // Fetch projects from MongoDB
 app.get("/projects", async (req, res) => {
   try {
-    const projects = await Project.findOne();
+    const projects = await Project.find();
+
     res.json({
       status: "success",
-      total: projects.length,
-      projects,
+      total: projects ? projects.length : 0,
+      projects: projects || [],
     });
   } catch (err) {
     res.status(500).json({ status: "error", message: err.message });
   }
 });
+
 
 // Fetch support info from MongoDB
 app.get("/support", async (req, res) => {
