@@ -9,7 +9,7 @@ app.use(express.json());
 
 // --- MongoDB Connection ---
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect("mongodb+srv://junedahmad9296:HZbmUK0qgQILgxxb@cluster0.8gqln8s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -49,6 +49,7 @@ app.get("/", (req, res) => {
 app.get("/projects", async (req, res) => {
   try {
     const projects = await Project.find({});
+    console.log(projects);
 
     res.json({
       status: "success",
